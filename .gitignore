@@ -1,0 +1,13 @@
+# Lines starting with # are comments
+# Blank lines can be used as separator for readability
+
+# The pattern below match a specific file which will be excluded
+#exlcuded-file
+
+# The pattern below match a folder and all its content
+#Analysis/root-trees/
+#NeuralNetwork/root-trees/
+#root-trees
+
+# The pattern below matches any file with extension .root
+*.root
