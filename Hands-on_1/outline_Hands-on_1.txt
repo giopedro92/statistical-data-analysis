@@ -1,0 +1,12 @@
+Lecture n. 1 [2024-11-08, 9-13]
+
+- Introduction
+- Conceptual elements of Data Modelling
+- RooFit 
+      PDF
+      Visualization
+      Data Sets
+      Composite models
+      Convolution / Resolution Models
+
+slides from 1 to 47

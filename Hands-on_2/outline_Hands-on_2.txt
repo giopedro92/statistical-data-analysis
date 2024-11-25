@@ -1,0 +1,12 @@
+Lecture n. 2 [2024-11-22, 9-13]
+
+- RooFit Workspace and Factory
+
+- Common Fitting Errors
+      Understanding MINUIT output
+      Instabilities and correlation coefficients
+
+- RooMinuit
+      Working with Likelihood and chi2 
+
+slides from 48 to 83

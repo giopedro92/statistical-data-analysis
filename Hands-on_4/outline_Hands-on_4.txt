@@ -1,0 +1,13 @@
+Lecture n. 4 [2024-12-13, 9-13]
+
+- Likelihood Interval.
+- Nuisance Parameters. Profile Likelihood. 
+- Slice Likelihood vs Profile Likelihood
+- RooStats:
+   Intervals
+   Hypothesis test.
+   Significance.
+   P-value.
+- Conclusions
+
+slides from 139 to 178
