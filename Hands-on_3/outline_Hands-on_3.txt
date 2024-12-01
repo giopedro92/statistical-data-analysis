@@ -1,14 +1,15 @@
 Lecture n. 3 [2024-11-29, 9-13]
 
-- TMVA
-
-slides from 91 to 119
-
-- RooFit
-       Model for a Number Counting Analysis
+- RooFit Model for a Number Counting Analysis
 - Incorporating systematics. 
-       The "on/off" problem. Signal/Control Region.
-- Constraint terms. Global observables.
-- RooUnFold
+       Auxiliary Measurements: "on/off" problem, Signal/Control Regions.
+       Constraint terms: Global observables.
+- Nuisance Parameters. Profile Likelihood. 
+- Likelihood Intervals. Slice Likelihood vs Profile Likelihood
+- RooStats:
+   Intervals
+   Hypothesis test.
+   Significance.
+   P-value.
 
-slides from 120 to 138
+slides from 82 to 115

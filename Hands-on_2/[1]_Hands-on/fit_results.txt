@@ -1,0 +1,56 @@
+-----------------------------------------------------------------------------------
+
+RooWorkspace(Ex11workspace) Ex11workspace contents
+
+variables
+---------
+(f,mean,s1,s2,x)
+
+p.d.f.s
+-------
+RooGaussian::gaus1[ x=x mean=mean sigma=s1 ] = 1
+RooGaussian::gaus2[ x=x mean=mean sigma=s2 ] = 1
+RooAddPdf::model[ f * gaus1 + [%] * gaus2 ] = 1/1
+
+datasets
+--------
+RooDataSet::modelData(x)
+
+-----------------------------------------------------------------------------------
+
+1) RooRealVar::    f = 0.8057 +/- 0.7291
+2) RooRealVar:: mean = 0
+3) RooRealVar::   s1 = 3.9
+4) RooRealVar::   s2 = 3.823 +/- 0.5798
+
+-----------------------------------------------------------------------------------
+
+1) RooRealVar::    f = 0.8057 +/- 0.5495
+2) RooRealVar:: mean = 0
+3) RooRealVar::   s1 = 3.9
+4) RooRealVar::   s2 = 3.823 +/- 1.939
+
+-----------------------------------------------------------------------------------
+
+1) RooRealVar::    f = 0.8057 +/- 0.5495
+2) RooRealVar:: mean = 0
+3) RooRealVar::   s1 = 3.9
+4) RooRealVar::   s2 = 3.823 +/- 1.939
+
+-----------------------------------------------------------------------------------
+
+RooFitResult: minimized FCN value: 2776, estimated distance to minimum: 4.074e-07
+              covariance matrix quality: Full, accurate covariance matrix
+              Status : MIGRAD=0 HESSE=0 MINOS=70 
+
+  Constant Parameter    Value     
+--------------------  ------------
+                mean    0.0000e+00
+                  s1    3.9000e+00
+
+  Floating Parameter  InitialValue    FinalValue +/-  Error     GblCorr.
+--------------------  ------------  --------------------------  --------
+                   f    5.0000e-01    8.0573e-01 +/-  5.50e-01  <none>
+                  s2    4.0000e+00    3.8233e+00 +/-  1.94e+00  <none>
+
+-----------------------------------------------------------------------------------
