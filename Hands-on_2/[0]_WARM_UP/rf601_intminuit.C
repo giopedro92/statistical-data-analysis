@@ -23,6 +23,7 @@ void rf601_intminuit()
  
    // Model (intentional strong correlations)
    RooRealVar mean("mean", "mean of g1 and g2", 0);
+
    RooRealVar sigma_g1("sigma_g1", "width of g1", 3);
    RooGaussian g1("g1", "g1", x, mean, sigma_g1);
  
@@ -108,8 +109,14 @@ void rf601_intminuit()
    m.hesse();
    frac.Print();
  
-   new TCanvas("rf601_intminuit", "rf601_intminuit", 600, 600);
+   TCanvas *c = new TCanvas("rf601_intminuit", "rf601_intminuit", 600, 600);
+   c->SetCanvasSize(2490, 1400);
+   c->SetWindowSize(2500, 1500);
+   
    gPad->SetLeftMargin(0.15);
    frame->GetYaxis()->SetTitleOffset(1.4);
+   frame->GetXaxis()->SetRangeUser(-0.1,1.1);
    frame->Draw();
+
+   c->Print("rf601_intminuit.png");
 }

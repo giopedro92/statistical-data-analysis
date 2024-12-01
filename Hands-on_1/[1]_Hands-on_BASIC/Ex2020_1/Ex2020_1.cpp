@@ -1,9 +1,28 @@
 #include "RooRealVar.h"
+#include "RooAbsArg.h"
+#include "RooAbsReal.h"
 #include "RooDataSet.h"
 #include "RooGaussian.h"
-#include "TCanvas.h"
+#include "RooProdPdf.h"
+#include "RooAddPdf.h"
+#include "RooMinimizer.h"
+#include "RooFitResult.h"
+#include "RooHistFunc.h"
 #include "RooPlot.h"
+#include "RooWorkspace.h"
+#include "TCanvas.h"
 #include "TAxis.h"
+#include "TFile.h"
+#include "TH1.h"
+#include "TH2.h"
+#include "RooFormulaVar.h"
+#include "RooDataHist.h"
+#include "RooGenericPdf.h"
+#include "RooAbsData.h"
+#include "RooAbsPdf.h"
+#include "TStyle.h"
+#include <iostream>
+
 using namespace RooFit;
 
 void Ex2020_1() {
@@ -12,18 +31,16 @@ void Ex2020_1() {
 
   // Declare variables x,mean,sigma with associated name, title, initial value and allowed range
 
-  RooRealVar x{"x", "energy", -20, 20};
+  RooRealVar x{"x", "x", -10, 10};
 
-  RooRealVar m{"m", "mean", 14, 11, 17};
-  RooRealVar s{"s", "width", 1, 0.1, 1};
-  RooRealVar a{"a", "alpha", 1.5, 0, 20};
-  RooRealVar n{"n", "n", 0.5, 0.1, 1};
+  RooRealVar m{"m", "mean",  0};
+  RooRealVar s{"s", "sigma", 1};
+  RooRealVar a{"a", "alpha", 1.5};
+  RooRealVar n{"n", "n",     1.5};
 
   // Build gaussian pdf in terms of x,mean and sigma
 
   RooCBShape model{"model", "CB shape", x, m, s, a, n};
-
-  s.setVal(0.3);
 
   // Construct plot frame in 'x'
 
@@ -43,8 +60,6 @@ void Ex2020_1() {
   // Plot gauss in frame (i.e. in x) and draw frame on canvas
 
   model.plotOn(frame);
-
-  frame->Draw();
 
   // G e n e r a t e   e v e n t s
   // -----------------------------
@@ -72,9 +87,20 @@ void Ex2020_1() {
 
   // Draw all frames on a canvas
 
-  new TCanvas;
   auto frame2 = x.frame();
   data->plotOn(frame2);
   model.plotOn(frame2);
+
+  TCanvas *c = new TCanvas("c", "CB shape", 2700, 1500);
+  c->Divide(2);
+
+  c->cd(1);
+  gPad->SetLeftMargin(0.15);
+  frame->Draw();
+
+  c->cd(2);
+  gPad->SetLeftMargin(0.15);
   frame2->Draw();
+
+  c->Print("CB.png");
 }

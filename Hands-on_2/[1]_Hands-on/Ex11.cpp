@@ -57,7 +57,7 @@ void Ex11() {
     auto x     = w.var("x");     // Returns as RooRealVar*
 
     // Visualize and save the gaussians we are working with
-    TCanvas *c1 = new TCanvas("c1", "c1");
+    TCanvas *c1 = new TCanvas("c1", "gaus1 gaus2 model");
     c1->SetCanvasSize(2490, 1400);
     c1->SetWindowSize(2500, 1500);
 
@@ -156,7 +156,7 @@ void Ex11() {
     res->Print("v");
 
     // Visualize the correlation matrix from the fit result
-    TCanvas *c2 = new TCanvas("c2", "c2");
+    TCanvas *c2 = new TCanvas("c2", "Correlation matrix");
     c2->SetCanvasSize(2490, 1400);
     c2->SetWindowSize(2500, 1500);
 
@@ -171,7 +171,7 @@ void Ex11() {
 
     // Create a contour plot for “f” vs “s2” at 68%, 95.45%, 99.73% confidence levels
     // using the method RooMinuit::contour(var1, var2, n1, n2, n3)
-    TCanvas *c3 = new TCanvas("c3", "c3");
+    TCanvas *c3 = new TCanvas("c3", "Contour plot of f vs s2");
     c3->SetCanvasSize(2490, 1400);
     c3->SetWindowSize(2500, 1500);
 

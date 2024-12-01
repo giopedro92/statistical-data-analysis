@@ -47,6 +47,11 @@ void rf503_wspaceread()
    model->fitTo(*data, PrintLevel(-1));
  
    // Plot data and PDF overlaid
+   TCanvas *c = new TCanvas("c", "Model and data read from workspace");
+
+   c->SetCanvasSize(2490, 1400);
+   c->SetWindowSize(2500, 1500);
+
    RooPlot *xframe = x->frame(Title("Model and data read from workspace"));
    data->plotOn(xframe);
    model->plotOn(xframe, LineStyle(1)); // 1 = kSolid
@@ -64,4 +69,6 @@ void rf503_wspaceread()
    model->plotOn(xframe, Components("bkg"), LineStyle(2)); // 2 = kDashed
 
    xframe->Draw();
+
+   c->Print("rf503_wspaceread.png");
 }

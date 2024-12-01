@@ -144,6 +144,8 @@ void Ex3() {
     c2->SetCanvasSize(2490, 1400);
     c2->SetWindowSize(2500, 1500);
 
+    c2->SetLeftMargin(0.12);
+
     RooPlot *plot = m.contour(mixing, dm2, 1, 2, 3);
     // 1, 2, 3 sigma
 
@@ -156,5 +158,5 @@ void Ex3() {
 
     plot->Draw();
 
-    c2->Print("output_minos_likelihood.png");
+    c2->Print("minos_likelihood.png");
 }
