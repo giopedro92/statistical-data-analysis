@@ -1,0 +1,9 @@
+ Breit-Wigner mean
+RooRealVar::mean_bw = 5.36232 +/- 0.00267026  L(5 - 5.7) // [GeV]
+
+ Gaussian mean
+RooRealVar::mean_g = 5.36221 +/- 0.00287341  L(5 - 5.7) // [GeV]
+
+--------------------------------------------------------
+
+massB0s = 5366.93 +/- 0.10 [MeV]

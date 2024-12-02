@@ -1,4 +1,4 @@
-// Setting up an extended maximum likelihood fit.
+// Setting up an extended maximum likelihood fit
 
 #include "RooRealVar.h"
 #include "RooDataSet.h"

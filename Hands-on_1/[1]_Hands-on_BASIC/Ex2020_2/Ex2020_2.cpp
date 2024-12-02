@@ -85,7 +85,10 @@ void Ex2020_2() {
   data->plotOn(frame2);
   model.plotOn(frame2);
 
-  TCanvas *c = new TCanvas("c", "Exponential shape", 2700, 1500);
+  TCanvas *c = new TCanvas("c", "Exponential shape");
+  c2->SetCanvasSize(2490, 1400);
+  c2->SetWindowSize(2500, 1500);
+
   c->Divide(2);
 
   c->cd(1);
