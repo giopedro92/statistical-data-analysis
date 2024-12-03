@@ -52,7 +52,7 @@ void rf201_composite()
 
    // PLOT
    TCanvas *c = new TCanvas("c", "Signal and Background", 2700, 1600);
-    c->SetCanvasSize(2690, 1500);
+   c->SetCanvasSize(2690, 1500);
 
    auto frame0 = x.frame(Title("Signal and Background"));
 
@@ -72,7 +72,7 @@ void rf201_composite()
    RooRealVar sig1frac("sig1frac", "fraction of component 1 in signal", 0.8, 0., 1.); // f_sig1
    RooAddPdf sig("sig", "Signal", RooArgList(sig1, sig2), sig1frac);
 
-    sig.plotOn(frame0, LineColor(43));
+   sig.plotOn(frame0, LineColor(43));
 
    frame0->Draw();
    gPad->BuildLegend(0.6,0.7, 0.9,0.9);
@@ -97,7 +97,7 @@ void rf201_composite()
 
 
    TCanvas *c1 = new TCanvas("c1", "Method 1", 2700, 1600);
-    c1->SetCanvasSize(2690, 1500);
+   c1->SetCanvasSize(2690, 1500);
 
    auto frame1 = x.frame(Title("Example of composite pdf=(sig1+sig2)+bkg Method 1"));
 
@@ -140,9 +140,8 @@ void rf201_composite()
    // P l o t   r e c u r s i v e   a d d i t i o n   m o d e l
    // ---------------------------------------------------------
    TCanvas *c2 = new TCanvas("c2", "Method 2", 2700, 1600);
-    c2->SetCanvasSize(2690, 1500);
+   c2->SetCanvasSize(2690, 1500);
 
-   
    auto xframe = x.frame(Title("Example of composite pdf=(sig1+sig2)+bkg Method 2"));
    
    model2.plotOn(xframe, LineColor(kRed), LineStyle(kDashed));
@@ -159,6 +158,6 @@ void rf201_composite()
 
    c2->Print("rf201_composite.png");
 
-    std::cout << "\n" << endl;
+   std::cout << "\n" << endl;
    model2.Print("t");
 }

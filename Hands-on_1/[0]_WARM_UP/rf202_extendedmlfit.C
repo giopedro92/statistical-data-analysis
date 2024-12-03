@@ -13,14 +13,13 @@ using namespace RooFit;
  
 void rf202_extendedmlfit()
 {
- 
    // S e t u p   c o m p o n e n t   p d f s
    // ---------------------------------------
- 
+
    // Declare observable x
    RooRealVar x("x", "x", 0, 10);
- 
-   // Create two Gaussian PDFs g1(x,mean1,sigma) anf g2(x,mean2,sigma) and their parameters
+
+   // Create two Gaussian PDFs g1(x,mean,sigma1) and g2(x,mean,sigma2) and their parameters
    RooRealVar mean("mean", "mean of gaussians", 5);
    RooRealVar sigma1("sigma1", "width of gaussians", 0.5);
    RooRealVar sigma2("sigma2", "width of gaussians", 1);
@@ -36,7 +35,8 @@ void rf202_extendedmlfit()
    // Sum the signal components into a composite signal pdf
    RooRealVar sig1frac("sig1frac", "fraction of component 1 in signal", 0.8, 0., 1.);
    RooAddPdf sig("sig", "Signal", RooArgList(sig1, sig2), sig1frac);
- 
+
+
    //----------------
    // M E T H O D   1
    //================
@@ -55,18 +55,22 @@ void rf202_extendedmlfit()
    // Generate a data sample of expected number events in x from model
    // = model.expectedEvents() = nsig+nbkg
    std::unique_ptr<RooDataSet> data{model.generate(x)};
- 
+
+
    // Fit model to data, extended ML term automatically included
    model.fitTo(*data, PrintLevel(-1));
- 
+
+
    // Plot data and PDF overlaid, use expected number of events for pdf projection normalization
    // rather than observed number of events (==data->numEntries())
    RooPlot *xframe = x.frame(Title("extended ML fit example"));
    data->plotOn(xframe);
-   model.plotOn(xframe, Normalization(1.0, RooAbsReal::RelativeExpected));
+   model.plotOn(xframe,
+                Normalization(1.0, RooAbsReal::RelativeExpected));
  
    // Overlay the background component of model with a dashed line
-   model.plotOn(xframe, Components(bkg), LineStyle(kDashed), Normalization(1.0, RooAbsReal::RelativeExpected));
+   model.plotOn(xframe, Components(bkg), LineStyle(kDashed),
+                Normalization(1.0, RooAbsReal::RelativeExpected));
  
    // Overlay the background+sig2 components of model with a dotted line
    model.plotOn(xframe, Components(RooArgSet(bkg, sig2)), LineStyle(kDotted),
@@ -74,7 +78,8 @@ void rf202_extendedmlfit()
  
    // Print structure of composite pdf
    model.Print("t");
- 
+
+
    //----------------
    // M E T H O D   2
    //================
@@ -90,11 +95,20 @@ void rf202_extendedmlfit()
    // -------------------------------------------------------------------------
  
    // Construct sum of two extended pdf (no coefficients required)
-   RooAddPdf model2("model2", "(g1+g2)+a", RooArgList(ebkg, esig));
+   RooAddPdf model2("model2", "model2", RooArgList(ebkg, esig));
  
    // Draw the frame on the canvas
-   new TCanvas("rf202_composite", "rf202_composite", 600, 600);
+   new TCanvas("rf202_composite", "rf202_composite", 2500, 1600);
    gPad->SetLeftMargin(0.15);
    xframe->GetYaxis()->SetTitleOffset(1.4);
+   
+   sig1.plotOn(xframe, LineColor(kRed));
+   sig2.plotOn(xframe, LineColor(kGreen));
+   sig.plotOn(xframe, LineColor(43));
+
+   model2.plotOn(xframe, LineColor(kRed), LineStyle(10));
+   
    xframe->Draw();
+
+   gPad->BuildLegend(0.6,0.7, 0.9,0.9);
 }
