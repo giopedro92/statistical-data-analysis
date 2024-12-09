@@ -50,11 +50,6 @@ void B0ppLHCb() {
 
 // define an extended composite model for invariant mass
 // 2. background (you’re free to choose the model: flat, polynomial, exponential, ...)
-    //RooRealVar coeff1{"coeff1", "coeff1", 1};
-    //RooRealVar c{"c", "c", 30};
-
-    //RooPolynomial bkg{"bkg", "Polinomial background", inv_mass, RooArgList(coeff1, c)};
-
     RooRealVar tau{"tau", "#tau", 0, 1000};
     RooFormulaVar rate{"rate", "1/#tau", "- 1. / tau", RooArgList(tau)};
     
@@ -66,10 +61,11 @@ void B0ppLHCb() {
 
 
 // 3. Gaussian peak around the B0 mass
+    RooRealVar sigma{"sigma", "#sigma", 0, 20};
+    
     RooRealVar meanB0{"meanB0", "Mean B^{0}mass", 5279.72, 5260, 5300, "MeV/c^{2}"};
-    RooRealVar sigmaB0{"sigmaB0", "#sigma_{B^{0}}", 0, 20};
 
-    RooGaussian B0mass{"B0mass", "B^{0} mass", inv_mass, meanB0, sigmaB0};
+    RooGaussian B0mass{"B0mass", "B^{0} mass", inv_mass, meanB0, sigma};
 
     RooRealVar NB0mass("NB0mass", "Number of B^{0} mass events", 33, 0., 10000);
 
@@ -78,9 +74,9 @@ void B0ppLHCb() {
 
 // 4. Gaussian peak around the Bs0 mass
     RooRealVar meanB0s{"meanB0s", "Mean B^{0}_{s}mass", 5366.93, 5340, 5390, "MeV/c^{2}"};
-    //RooRealVar sigmaB0s{"sigmaB0s", "#sigma_{B^{0}_{s}}", 0, 20};
+    // STESSA SIGMA ANCHE PER B0s, STESSA AMPIEZZA PER ENTRAMBI I PICCHI
 
-    RooGaussian B0smass{"B0smass", "B^{0}_{s} mass", inv_mass, meanB0s, sigmaB0}; // STESSA SIGMA ANCHE PER B0s, STESSA AMPIEZZA PER ENTRAMBI I PICCHI
+    RooGaussian B0smass{"B0smass", "B^{0}_{s} mass", inv_mass, meanB0s, sigma};
 
     RooRealVar NB0smass("NB0smass", "Number of B^{0}_{s} mass events", 1, 0., 10000);
 
@@ -89,14 +85,13 @@ void B0ppLHCb() {
 
 // Build a composite model in the following form (with extended pdfs)
    //   Emodel = Ebkg + (Esig1 + Esig2)
-    RooAddPdf Emodel{"Emodel", "Extended model B^{0} + B^{0}_{s} + bkg", RooArgList(Ebkg, EB0mass, EB0smass)};
+    RooAddPdf Emodel{"Emodel", "Extended composite model B^{0} + B^{0}_{s} + bkg", RooArgList(Ebkg, EB0mass, EB0smass)};
 
 
 // 6. Plot data and model
 // 7. Superimpose each single component with different color
-    TCanvas *c1 = new TCanvas("c1", "(E)Components, Emodel", 2800, 1700);
+    TCanvas *c1 = new TCanvas("c1", "(E)Components & Emodel", 2800, 1700);
     c1->SetCanvasSize(2790, 1600);
-
     c1->Divide(2);
 
 
@@ -119,7 +114,7 @@ void B0ppLHCb() {
 
 
 // B0, B0s and bkg EXTENDED
-    auto frame2 = inv_mass.frame(Title("Extendeds and Composite Extended model B^{0} + B^{0}_{s} + background"));
+    auto frame2 = inv_mass.frame(Title("Extendeds and Composite Extended model B^{0} + B^{0}_{s} + bkg"));
 
     Ebkg.plotOn(frame2, LineColor(kGreen));
     EB0mass.plotOn(frame2, LineColor(kRed));
@@ -143,9 +138,7 @@ void B0ppLHCb() {
 
     inv_mass.setBins(25); //(bin width = 0.5) --> x_width / bin_width
 
-
     auto frame3 = inv_mass.frame(Title("Data and Fits"));
-
 
     data.plotOn(frame3, Name("data"));
 
@@ -159,7 +152,7 @@ void B0ppLHCb() {
     
     Emodel.fitTo(data);
 
-    
+
 // QUESTO STAMPA LE PDF S E N Z A NORMALIZZARLE O USARE QUELLE CHE SONO LE COMPONENTI DEL MODELLO !!!!!
 // PER QUESTO NON LE RISCALA
     //Ebkg.plotOn(frame3, LineColor(kGreen));
@@ -184,8 +177,8 @@ void B0ppLHCb() {
 
 
 // Make histogram of residual and pull distributions
-    TCanvas *c3 = new TCanvas("c3", "Residual and pull distributions", 2800, 1700);
-    c3->SetCanvasSize(2790, 1600);
+    TCanvas *c3 = new TCanvas("c3", "Residual and pull distributions", 2800, 1600);
+    c3->SetCanvasSize(2790, 1500);
     c3->Divide(2);
 
 
@@ -202,7 +195,6 @@ void B0ppLHCb() {
     frame4->addPlotable(hresid, "P");
 
     c3->cd(1);
-    //frame4->GetYaxis()->SetTitle("");
     gPad->SetLeftMargin(0.15);
     frame4->Draw();
 
@@ -212,7 +204,6 @@ void B0ppLHCb() {
     frame5->addPlotable(hpull, "P");
 
     c3->cd(2);
-    //frame5->GetYaxis()->SetTitle("");
     gPad->SetLeftMargin(0.15);
     frame5->Draw();
 
