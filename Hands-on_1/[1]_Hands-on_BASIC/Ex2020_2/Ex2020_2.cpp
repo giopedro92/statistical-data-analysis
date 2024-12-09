@@ -31,7 +31,7 @@ void Ex2020_2() {
 
   // Declare variables x,mean,sigma with associated name, title, initial value and allowed range
 
-  RooRealVar x{"x", "x", -10, 10};
+  RooRealVar x{"x", "x", -10, 10}; // x_width = 20
 
   RooRealVar tau{"tau", "Mean life", 3};
 
@@ -61,7 +61,7 @@ void Ex2020_2() {
 
   // Generate a dataset of 1000 events in x from gauss
 
-  x.setBins(200);
+  x.setBins(40); // x_width = 20 / bin_width = 0.5
 
   RooDataHist *data = model.generateBinned(x, 1000);
 
@@ -86,8 +86,8 @@ void Ex2020_2() {
   model.plotOn(frame2);
 
   TCanvas *c = new TCanvas("c", "Exponential shape");
-  c2->SetCanvasSize(2490, 1400);
-  c2->SetWindowSize(2500, 1500);
+  c->SetCanvasSize(2490, 1400);
+  c->SetWindowSize(2500, 1500);
 
   c->Divide(2);
 

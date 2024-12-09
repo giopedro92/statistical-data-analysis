@@ -47,6 +47,7 @@ void rf202_extendedmlfit()
    // Sum the composite signal and background into an extended pdf nsig*sig+nbkg*bkg
    RooRealVar nsig("nsig", "number of signal events", 500, 0., 10000);
    RooRealVar nbkg("nbkg", "number of background events", 500, 0, 10000);
+   
    RooAddPdf model("model", "(g1+g2)+a", RooArgList(bkg, sig), RooArgList(nbkg, nsig));
  
    // S a m p l e ,   f i t   a n d   p l o t   e x t e n d e d   m o d e l

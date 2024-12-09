@@ -49,6 +49,7 @@ void Ex12_2() {
       return;
    }
 
+
 // 2. import the corresponding binned dataset
    TH1* hist = dynamic_cast<TH1*>(root_file->Get("massaB0"));
    
@@ -62,14 +63,17 @@ void Ex12_2() {
 
    RooDataHist hist_B0mass("hist_B0mass", "Histogram B0 mass", RooArgList(inv_mass), Import(*hist));
 
+
 // 3. Create a Breit-Wigner model
    RooRealVar mean_bw{"mean_bw", "Mean_bw", 5.36693, 5, 5.7, "GeV"};
    RooRealVar gamma_bw{"gamma_bw", "gamma_bw", 0, 1};
 
    RooBreitWigner bw_model{"bw_model", "Breit-Wigner", inv_mass, mean_bw, gamma_bw};
 
+
 // 4. Fit the model to the binned dataset   
    bw_model.fitTo(hist_B0mass);
+
 
 // 5. Create a Gaussian function
    RooRealVar mean_g{"mean_g", "Mean_g", 5.36693, 5, 5.7, "GeV"};
@@ -77,8 +81,10 @@ void Ex12_2() {
 
    RooGaussian gaus_model{"gaus_model", "Gaussian", inv_mass, mean_g, sigma_g};
 
+
 // 6. fit to the data
    gaus_model.fitTo(hist_B0mass);
+
 
 // 7. plot the data and the BW and Gaussian distribution to the same canvas
    TCanvas *c = new TCanvas("c", "B^{0} mass", 2490, 1400);
@@ -95,6 +101,7 @@ void Ex12_2() {
    gPad->BuildLegend(0.6,0.7, 0.9,0.9);
 
    c->Print("B0mass.png");
+
 
 // 8. Compare the fitted value with the particle mass reported in the Particle Data Group
    std::cout << "\n Breit-Wigner mean" << endl;
