@@ -16,8 +16,9 @@ sudo docker run \
 -v /tmp/.X11-unix:/tmp/.X11-unix \
 --rm \
 -it \
--v /home/giovanni-pedrelli/statistical-data-analysis:/wsl \
+-v /home/giovanni-pedrelli/statistical-data-analysis/:/wsl/ \
 --user $(id -u) \
+-w /wsl/ \
 rootproject/root bash
 ```
 

@@ -1,0 +1,65 @@
+----------------------------------------------------------------------------------
+
+coefficients of a Fisher discriminant
+
+<MethodSetup Method="Fisher::Fisher">
+
+  <MVAPdfs>
+    <PDF Name="Fisher_PDFSig" MinNSmooth="10" MaxNSmooth="10" InterpolMethod="2" KDE_type="1" KDE_iter="1" KDE_border="1" KDE_finefactor="1.0000000000000000e+00">
+      <Histogram Name="Fisher_tr_S_original" NBins="50" XMin="-3.9984076023101807e+00" XMax="3.8710253238677979e+00" HasEquidistantBins="1">
+        0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 2.06735147e-04 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 2.34039137e-04 0.00000000e+00 5.30554893e-04 2.34039137e-04 2.34104168e-04 5.57793853e-04 6.47574461e-04 2.65257937e-03 2.44584423e-03 3.56149696e-03 8.25128901e-03 1.57603038e-02 2.95585636e-02 5.40842751e-02 2.12130184e-01 4.16970375e-01 7.11205791e-01 9.84396632e-01 1.20832402e+00 1.19252143e+00 8.82210771e-01 4.35268611e-01 1.00345726e-01 4.40696954e-02 1.83674238e-02 5.75642076e-03 6.07260210e-03 4.63286950e-03 3.60660719e-03 1.14334691e-03 2.21677389e-03 1.68621900e-03 0.00000000e+00 4.40904345e-04 3.02118420e-03 0.00000000e+00 2.34169198e-04 1.17019569e-04 0.00000000e+00 0.00000000e+00 0.00000000e+00 
+      </Histogram>
+    </PDF>
+    <PDF Name="Fisher_PDFBkg" MinNSmooth="10" MaxNSmooth="10" InterpolMethod="2" KDE_type="1" KDE_iter="1" KDE_border="1" KDE_finefactor="1.0000000000000000e+00">
+      <Histogram Name="Fisher_tr_B_original" NBins="50" XMin="-3.9984076023101807e+00" XMax="3.8710253238677979e+00" HasEquidistantBins="1">
+        9.47465630e-05 0.00000000e+00 0.00000000e+00 0.00000000e+00 3.11567069e-04 4.23848413e-04 8.05959081e-04 9.47465630e-05 9.47465630e-05 9.47465630e-05 6.83135187e-04 2.33166610e-03 1.23862438e-03 7.03196367e-03 5.82705500e-03 1.05491354e-02 2.02956509e-02 3.41165727e-02 1.26377618e-01 4.08504127e-01 7.39053826e-01 7.46896956e-01 9.32634923e-01 9.81428024e-01 7.38247083e-01 5.24049802e-01 3.96482814e-01 3.14756204e-01 2.05459122e-01 9.48088681e-02 3.55937618e-02 1.05286196e-02 6.71618833e-03 3.35799143e-03 1.77059151e-03 1.73269014e-03 4.60287517e-04 6.76379603e-05 2.22156414e-04 4.27255836e-04 1.06217682e-05 5.62775007e-05 0.00000000e+00 4.97360923e-05 0.00000000e+00 1.06217682e-05 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 
+      </Histogram>
+    </PDF>
+  </MVAPdfs>
+
+  <Weights NCoeff="30">
+    <Coefficient Index="0" Value="-7.1138228033635187e-01"/>
+    <Coefficient Index="1" Value="5.8821529486854901e-02"/>
+    <Coefficient Index="2" Value="3.6682084423909700e-01"/>
+    <Coefficient Index="3" Value="-5.2801552325109635e-02"/>
+    <Coefficient Index="4" Value="1.0865589316732833e-04"/>
+    <Coefficient Index="5" Value="1.6432733292143752e-04"/>
+    <Coefficient Index="6" Value="-9.7053422508922328e-03"/>
+    <Coefficient Index="7" Value="-7.6929200332043392e-03"/>
+    <Coefficient Index="8" Value="6.8678719528417323e-02"/>
+    <Coefficient Index="9" Value="1.4597027827319053e-03"/>
+    <Coefficient Index="10" Value="-6.5656350750340116e-04"/>
+    <Coefficient Index="11" Value="1.5747891060176615e-03"/>
+    <Coefficient Index="12" Value="-4.2402235126735484e+00"/>
+    <Coefficient Index="13" Value="4.2387488488838319e+00"/>
+    <Coefficient Index="14" Value="4.0225214453545530e-04"/>
+    <Coefficient Index="15" Value="-9.7281967296146941e-04"/>
+    <Coefficient Index="16" Value="6.0295718948809611e-04"/>
+    <Coefficient Index="17" Value="4.9860867065696937e-02"/>
+    <Coefficient Index="18" Value="-6.6309041312118003e-04"/>
+    <Coefficient Index="19" Value="-4.7847430672118066e-03"/>
+    <Coefficient Index="20" Value="-2.1813874621250682e-03"/>
+    <Coefficient Index="21" Value="1.3595296985427002e-03"/>
+    <Coefficient Index="22" Value="-4.5401409475025944e-03"/>
+    <Coefficient Index="23" Value="4.2462260949363690e+00"/>
+    <Coefficient Index="24" Value="1.5392189233413415e-03"/>
+    <Coefficient Index="25" Value="-2.3054828315471876e-03"/>
+    <Coefficient Index="26" Value="6.6349876121611217e-04"/>
+    <Coefficient Index="27" Value="2.3980333318792974e-03"/>
+    <Coefficient Index="28" Value="-3.4437746243483392e-03"/>
+    <Coefficient Index="29" Value="4.2539105998725768e+00"/>
+  </Weights>
+
+</MethodSetup>
+
+----------------------------------------------------------------------------------
+
+According to the ROC curves, the best classifier is the BDT classifier since
+it has the best relationship between background rejection and signal efficiency
+(higher background rejection and higher signal efficiency with respect to all
+other classifiers used).
+
+Then, according to the cut efficiencies curves, the
+maximum efficiency (significance) is obtained by setting the cut at 0.0180.
+
+----------------------------------------------------------------------------------
